@@ -12,19 +12,9 @@ public class Conexiones extends AbstractConexion {
 		try {
 	
 			//Llamada a la clase menu
+			conn = ConexionMYSQL.getConnection();
 			Menu menu = new Menu();
 			menu.displayMenu();
-
-			//Estadisticas
-			/*
-			System.out.println("ESTADISTICAS");
-			stats.mostrarEstadiscticas();
-			System.out.println("JUGADORES");
-			jugador.mostrarJugador();
-			System.out.println("PARTIDO");
-			partido.mostrarPartido();
-			*/
-			conn = ConexionMYSQL.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

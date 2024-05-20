@@ -3,6 +3,7 @@ package Menu;
 import java.util.Scanner;
 
 import controlador.EquipoDAOImple;
+import controlador.EstadisticasDAOImple;
 import controlador.JugadorDAOImple;
 import modelos.Equipo;
 import modelos.Estadistica;
@@ -17,6 +18,7 @@ public class Menu {
 		int opcion;
 		EquipoDAOImple gestionEquipo = new EquipoDAOImple();
 		JugadorDAOImple gestionJugador = new JugadorDAOImple();
+		EstadisticasDAOImple gestionStats = new EstadisticasDAOImple();
 
 		Equipo equipos = new Equipo();
 		Estadistica stats = new Estadistica();
@@ -99,7 +101,7 @@ public class Menu {
 				System.out.println("Has seleccionado JUGADORES");
 				int opcionJugadores;
 				do {
-					System.out.println("-----SUB-MENU EQUIPOS-----");
+					System.out.println("-----SUB-MENU JUGADORES-----");
 					System.out.println("1. Listar todos los jugadores");
 					System.out.println("2. Buscar jugadores por nombre");
 					System.out.println("3. Crear jugador");
@@ -145,12 +147,11 @@ public class Menu {
 						gestionJugador.findAll();
 						break;
 					case 4:
-						jugadorCreado = new Jugador(1212, "Gabriel", "Procedencia", "175", 12, "delantero",
-								"Madrid");
+						jugadorCreado = new Jugador(1212, "Gabriel", "Procedencia", "175", 12, "delantero", "Madrid");
 						System.out.println(gestionJugador.ficharJugador(jugadorCreado));
 						break;
 					case 5:
-						//No entiendo
+						// No entiendo
 						break;
 					case 6:
 						System.out.println("Que jugador quieres eliminar?");
@@ -171,14 +172,15 @@ public class Menu {
 				System.out.println("Has seleccionado ESTADISTICAS");
 				int opcionStats;
 				do {
-					System.out.println("-----SUB-MENU EQUIPOS-----");
-					System.out.println("1. Listar todos los jugadores");
-					System.out.println("2. Buscar jugadores por nombre");
-					System.out.println("3. Crear jugador");
-					System.out.println("4. Fichar Jugador");
-					System.out.println("5. Pruebas fisicas jugador");
-					System.out.println("6. Retirar jugador");
-					System.out.println("7. Volver al menú principal");
+					System.out.println("-----SUB-MENU ESTADISTICAS-----");
+					System.out.println("1. Mostrar estadisticas por jugador");
+					System.out.println("2. Mostrar estadisticas por ubicacion");
+					System.out.println("3. Mostrar estadisticas por equipo");
+					System.out.println("4. Media de puntos partido de jugador");
+					System.out.println("5. Media de asistencias partido de jugador");
+					System.out.println("6. Media de tapones partido de jugador");
+					System.out.println("7. Media de rebotes partido de jugador");
+					System.out.println("8. Volver al menú principal");
 
 					System.out.print("Introduzca una opcion: ");
 					opcionStats = sc.nextInt();
@@ -188,28 +190,41 @@ public class Menu {
 						
 						break;
 					case 2:
-						
+
 						break;
 					case 3:
-						
+
 						break;
 					case 4:
-						
+						System.out.println("Introduce el jugador que quieras saber su media de puntos");
+						String buscarNombre = sc.next();
+						Jugador jugadorStats = gestionJugador.findById(buscarNombre);
+						System.out.println(gestionStats.mediaPuntosPartido(jugadorStats));
 						break;
 					case 5:
+						System.out.println("Introduce el jugador que quieras saber su media de asistencias");
+						String buscarNombre3 = sc.next();
+						Jugador jugadorStats3 = gestionJugador.findById(buscarNombre3);
+						System.out.println(gestionStats.mediaAsistencias(jugadorStats3));
 						break;
 					case 6:
-						
+						System.out.println("Introduce el jugador que quieras saber su media de tapones");
+						String buscarNombre1 = sc.next();
+						Jugador jugadorStats1 = gestionJugador.findById(buscarNombre1);
+						System.out.println(gestionStats.mediaTapones(jugadorStats1));
+						break;
 					case 7:
+						System.out.println("Introduce el jugador que quieras saber su media de rebotes");
+						String buscarNombre2 = sc.next();
+						Jugador jugadorStats2 = gestionJugador.findById(buscarNombre2);
+						System.out.println(gestionStats.mediaRebotes(jugadorStats2));
+						break;
+					case 8:
 						break;
 					default:
 						break;
 					}
-				} while (opcionStats != 7);
-				
-				
-				
-				
+				} while (opcionStats != 8);
 				break;
 
 			case 4:
