@@ -23,7 +23,6 @@ public class EquipoDAOImple extends AbstractConexion implements EquipoDAO {
 	private static int filasAfectadas;
 	@Override
 	public Equipo findById(String nombre) {
-
 		try {
 			quitarRestricciones();
 			query = "SELECT * FROM equipos WHERE Nombre = ? ";

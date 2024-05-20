@@ -11,88 +11,83 @@ import conexion.Conexiones;
 
 public class Jugador extends AbstractConexion{
 	
-	private String temporada;
-	private int jugador;
-	private double Puntos_por_partido, Asistencias_por_partido, Tapones_por_partido, Rebotes_por_partido;
+	private String nombreJugador,procedencia,altura,posicion,nombreEquipo;
+	private int codigo,peso;
 	
-	public Jugador(){
-		
+	public Jugador(int codigo,String nombreJugador,String procedencia,String altura,int peso,String posicion,String nombreEquipo) {
+		super();
+		this.nombreJugador = nombreJugador;
+		this.procedencia = procedencia;
+		this.altura = altura;
+		this.posicion = posicion;
+		this.nombreEquipo = nombreEquipo;
+		this.codigo = codigo;
+		this.peso = peso;
 	}
 
-	public void mostrarJugador() {	   
-	            try {
-	                System.out.println("Conectado correctamente a la base de datos\n");
-	                Statement st = conn.createStatement();
-	                String query = "SELECT * FROM JUGADORES;";
-	                ResultSet rs = st.executeQuery(query);
+	public Jugador() {}
 
-	                while(rs.next()) {
-	                    System.out.println(rs.getString(1));
-	                }
+	public String getNombre() {
+		return nombreJugador;
+	}
 
-	            } catch (SQLException e) {
-	                System.out.println("Ha habido algún problema en la conexión");
-	                e.printStackTrace();
-	            }
-	    }
+	public void setNombre(String nombreJugador) {
+		this.nombreJugador = nombreJugador;
+	}
+
+	public String getProcedencia() {
+		return procedencia;
+	}
+
+	public void setProcedencia(String procedencia) {
+		this.procedencia = procedencia;
+	}
+
+	public String getAltura() {
+		return altura;
+	}
+
+	public void setAltura(String altura) {
+		this.altura = altura;
+	}
+
+	public String getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(String posicion) {
+		this.posicion = posicion;
+	}
+
+	public String getNombre_equipo() {
+		return nombreEquipo;
+	}
+
+	public void setNombre_equipo(String nombreEquipo) {
+		this.nombreEquipo = nombreEquipo;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public int getPeso() {
+		return peso;
+	}
+
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
 
 	@Override
 	public String toString() {
-		return "ModeloJugador [temporada=" + temporada + ", jugador=" + jugador + ", Puntos_por_partido="
-				+ Puntos_por_partido + ", Asistencias_por_partido=" + Asistencias_por_partido + ", Tapones_por_partido="
-				+ Tapones_por_partido + ", Rebotes_por_partido=" + Rebotes_por_partido + "]";
+		return "Jugador [nombre=" + nombreJugador + ", procedencia=" + procedencia + ", altura=" + altura + ", posicion="
+				+ posicion + ", nombre_equipo=" + nombreEquipo + ", codigo=" + codigo + ", peso=" + peso + "]";
 	}
-
-	public String getTemporada() {
-		return temporada;
-	}
-
-	public void setTemporada(String temporada) {
-		this.temporada = temporada;
-	}
-
-	public int getJugador() {
-		return jugador;
-	}
-
-	public void setJugador(int jugador) {
-		this.jugador = jugador;
-	}
-
-	public double getPuntos_por_partido() {
-		return Puntos_por_partido;
-	}
-
-	public void setPuntos_por_partido(double puntos_por_partido) {
-		Puntos_por_partido = puntos_por_partido;
-	}
-
-	public double getAsistencias_por_partido() {
-		return Asistencias_por_partido;
-	}
-
-	public void setAsistencias_por_partido(double asistencias_por_partido) {
-		Asistencias_por_partido = asistencias_por_partido;
-	}
-
-	public double getTapones_por_partido() {
-		return Tapones_por_partido;
-	}
-
-	public void setTapones_por_partido(double tapones_por_partido) {
-		Tapones_por_partido = tapones_por_partido;
-	}
-
-	public double getRebotes_por_partido() {
-		return Rebotes_por_partido;
-	}
-
-	public void setRebotes_por_partido(double rebotes_por_partido) {
-		Rebotes_por_partido = rebotes_por_partido;
-	}
-
-
-	
 
 
 }
