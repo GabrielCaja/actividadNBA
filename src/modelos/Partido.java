@@ -7,33 +7,26 @@ import java.sql.Statement;
 
 import conexion.AbstractConexion;
 import conexion.ConexionMYSQL;
-import conexion.Conexiones;
+import conexion.app;
 
 public class Partido extends AbstractConexion{
 	
 	private int codigo, puntos_local, puntos_visitante;
 	private String equipo_local, equipo_visitante,temporada;
 	
-	public Partido(){
-		
+	public Partido(){}
+	
+	public Partido(int codigo, int puntos_local, int puntos_visitante, String equipo_local, String equipo_visitante,
+			String temporada) {
+		super();
+		this.codigo = codigo;
+		this.puntos_local = puntos_local;
+		this.puntos_visitante = puntos_visitante;
+		this.equipo_local = equipo_local;
+		this.equipo_visitante = equipo_visitante;
+		this.temporada = temporada;
 	}
 
-	public void mostrarPartido() {	   
-	            try {
-	                System.out.println("Conectado correctamente a la base de datos\n");
-	                Statement st = conn.createStatement();
-	                String query = "SELECT * FROM PARTIDOS;";
-	                ResultSet rs = st.executeQuery(query);
-
-	                while(rs.next()) {
-	                    System.out.println(rs.getString(1));
-	                }
-
-	            } catch (SQLException e) {
-	                System.out.println("Ha habido algún problema en la conexión");
-	                e.printStackTrace();
-	            }
-	    }
 
 	public int getCodigo() {
 		return codigo;
@@ -85,9 +78,16 @@ public class Partido extends AbstractConexion{
 
 	@Override
 	public String toString() {
-		return "ModeloPartido [codigo=" + codigo + ", puntos_local=" + puntos_local + ", puntos_visitante="
-				+ puntos_visitante + ", equipo_local=" + equipo_local + ", equipo_visitante=" + equipo_visitante
-				+ ", temporada=" + temporada + "]";
+	    return "ModeloPartido {\n" +
+	           "    codigo          = " + codigo + ",\n" +
+	           "    puntos_local    = " + puntos_local + ",\n" +
+	           "    puntos_visitante= " + puntos_visitante + ",\n" +
+	           "    equipo_local    = '" + equipo_local + "',\n" +
+	           "    equipo_visitante= '" + equipo_visitante + "',\n" +
+	           "    temporada       = '" + temporada + "'\n" +
+	           "}";
 	}
+
+
 
 }

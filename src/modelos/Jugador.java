@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import conexion.AbstractConexion;
 import conexion.ConexionMYSQL;
-import conexion.Conexiones;
+import conexion.app;
 
 public class Jugador extends AbstractConexion{
 	
@@ -85,9 +85,18 @@ public class Jugador extends AbstractConexion{
 
 	@Override
 	public String toString() {
-		return "Jugador [nombre=" + nombreJugador + ", procedencia=" + procedencia + ", altura=" + altura + ", posicion="
-				+ posicion + ", nombre_equipo=" + nombreEquipo + ", codigo=" + codigo + ", peso=" + peso + "]";
+	    return "Jugador {\n" +
+	           "    nombre          = '" + nombreJugador + "',\n" +
+	           "    procedencia     = '" + procedencia + "',\n" +
+	           "    altura          = '" + altura + "',\n" +
+	           "    posicion        = '" + posicion + "',\n" +
+	           "    nombre_equipo   = '" + nombreEquipo + "',\n" +
+	           "    codigo          = " + codigo + ",\n" +
+	           "    peso            = " + peso + "\n" +
+	           "}";
 	}
+
+
 
 
 }

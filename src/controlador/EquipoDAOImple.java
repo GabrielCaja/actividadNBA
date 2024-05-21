@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 import conexion.AbstractConexion;
 import conexion.ConexionMYSQL;
-import conexion.Conexiones;
+import conexion.app;
 import interfaces.EquipoDAO;
 import modelos.Equipo;
 

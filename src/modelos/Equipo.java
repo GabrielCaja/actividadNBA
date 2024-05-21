@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import conexion.AbstractConexion;
 import conexion.ConexionMYSQL;
-import conexion.Conexiones;
+import conexion.app;
 
 public class Equipo extends AbstractConexion{
 
@@ -23,13 +23,16 @@ public class Equipo extends AbstractConexion{
 		this.division = division;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "[nombre=" + nombre + ", ciudad=" + ciudad + ", conferencia=" + conferencia + ", division="
-				+ division + "]";
+	    return "Equipo {\n" +
+	           "    nombre       = '" + nombre + "',\n" +
+	           "    ciudad       = '" + ciudad + "',\n" +
+	           "    conferencia  = '" + conferencia + "',\n" +
+	           "    division     = '" + division + "'\n" +
+	           "}";
 	}
+
 
 	public String getNombre() {
 		return nombre;

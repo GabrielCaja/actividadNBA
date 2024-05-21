@@ -5,6 +5,7 @@ import java.util.Scanner;
 import controlador.EquipoDAOImple;
 import controlador.EstadisticasDAOImple;
 import controlador.JugadorDAOImple;
+import controlador.PartidoDAOImple;
 import modelos.Equipo;
 import modelos.Estadistica;
 import modelos.Jugador;
@@ -19,6 +20,7 @@ public class Menu {
 		EquipoDAOImple gestionEquipo = new EquipoDAOImple();
 		JugadorDAOImple gestionJugador = new JugadorDAOImple();
 		EstadisticasDAOImple gestionStats = new EstadisticasDAOImple();
+		PartidoDAOImple gestionPartido = new PartidoDAOImple();
 
 		Equipo equipos = new Equipo();
 		Estadistica stats = new Estadistica();
@@ -201,14 +203,9 @@ public class Menu {
 						System.out.println(gestionStats.findByCountry(buscarNombreStat2));
 						break;
 					case 3:
-						
 						sc = new Scanner(System.in);
 						String buscarNombreStat3 = sc.nextLine();
 						System.out.println(gestionStats.findByEquipo(buscarNombreStat3));
-						
-						
-						
-						
 						break;
 					case 4:
 						System.out.println("Introduce el jugador que quieras buscar");
@@ -239,8 +236,11 @@ public class Menu {
 						System.out.println(gestionStats.mediaRebotes(jugadorStats4));
 						break;
 					case 8:
+
 						break;
 					default:
+						System.out.println("Introduce otra opción válida.");
+
 						break;
 					}
 				} while (opcionStats != 8);
@@ -248,6 +248,75 @@ public class Menu {
 
 			case 4:
 				System.out.println("Has seleccionado PARTIDOS");
+				int opcionPartidos;
+				do {
+					System.out.println("-----SUB-MENU ESTADISTICAS-----");
+					System.out.println("1. Visualizar datos");
+					System.out.println("2. Media de puntos por equipos en partido");
+					System.out.println("3. Media de asistencias por equipos en partido");
+					System.out.println("4. Media de tapones por equipos en partido");
+					System.out.println("5. Media de rebotes por equipos en partido");
+					System.out.println("6. Media de puntos equipo local partido");
+					System.out.println("7. Media de puntos equipo visitante partido");
+					System.out.println("8. Volver al menú principal");
+
+					System.out.print("Introduzca una opcion: ");
+					opcionPartidos = sc.nextInt();
+
+					switch (opcionPartidos) {
+					//Mostrar todos los partidos
+					case 1:
+						System.out.println("Mostrando todos los partidos...");
+						gestionPartido.visualizarDatos();
+
+						break;
+						//Media de puntos por equipo
+
+					case 2:
+						System.out.println("Indica el nombre del equipo: ");
+						sc = new Scanner(System.in);
+						String nombre3 = sc.nextLine();
+						Equipo equipo = gestionEquipo.findById(nombre3);
+						System.out.println(gestionPartido.mediaPuntos(equipo));
+						break;
+						//Media de asistencias por equipo
+					case 3:
+						System.out.println("Indica el nombre del equipo: ");
+						sc = new Scanner(System.in);
+						String nombre5 = sc.nextLine();
+						equipo = gestionEquipo.findById(nombre5);
+						System.out.println(gestionPartido.mediaAsistencias(equipo));
+						break;
+						//Media de tapones por equipo
+					case 4:
+						System.out.println("Indica el nombre del equipo: ");
+						sc = new Scanner(System.in);
+						String nombre6 = sc.nextLine();
+						equipo = gestionEquipo.findById(nombre6);
+						System.out.println(gestionPartido.mediaTapones(equipo));
+						break;
+						//Media de rebotes por equipo
+					case 5:
+						System.out.println("Indica el nombre del equipo: ");
+						sc = new Scanner(System.in);
+						String nombre7 = sc.nextLine();
+						equipo = gestionEquipo.findById(nombre7);
+						System.out.println(gestionPartido.mediaRebotes(equipo));
+						break;
+					case 6:
+					
+						break;
+					case 7:
+
+						break;
+					case 8:
+
+						break;
+					default:
+						System.out.println("Introduce otra opción válida.");
+						break;
+					}
+				} while (opcionPartidos != 8);
 				break;
 
 			case 5:

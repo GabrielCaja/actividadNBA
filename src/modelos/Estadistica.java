@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import conexion.AbstractConexion;
 import conexion.ConexionMYSQL;
-import conexion.Conexiones;
+import conexion.app;
 
 public class Estadistica extends AbstractConexion{
 
@@ -97,10 +97,16 @@ public class Estadistica extends AbstractConexion{
 
 	@Override
 	public String toString() {
-		return "ModeloEstadisticas [temporada=" + temporada + ", jugador=" + jugador + ", Puntos_por_partido="
-				+ Puntos_por_partido + ", Asistencias_por_partido=" + Asistencias_por_partido + ", Tapones_por_partido="
-				+ Tapones_por_partido + ", Rebotes_por_partido=" + Rebotes_por_partido + "]";
+	    return "ModeloEstadisticas {\n" +
+	           "    temporada              = '" + temporada + "',\n" +
+	           "    jugador                = " + jugador + ",\n" +
+	           "    Puntos_por_partido     = " + Puntos_por_partido + ",\n" +
+	           "    Asistencias_por_partido= " + Asistencias_por_partido + ",\n" +
+	           "    Tapones_por_partido    = " + Tapones_por_partido + ",\n" +
+	           "    Rebotes_por_partido    = " + Rebotes_por_partido + "\n" +
+	           "}";
 	}
+
 
 
 }
