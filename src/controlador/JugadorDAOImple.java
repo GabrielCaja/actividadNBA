@@ -19,11 +19,11 @@ public class JugadorDAOImple extends AbstractConexion implements JugadorDAO{
 	public Jugador findById(String nombre) {
 		try {
 			quitarRestricciones();
-			query = "SELECT * FROM jugadores WHERE nombre = ?";
+			query = "SELECT * FROM jugadores WHERE nombre  like ?";
 			
 			pst = conn.prepareStatement(query);
 			
-			pst.setString(1, nombre);
+			pst.setString(1, nombre + "%");
 			rs = pst.executeQuery();
 
 			while (rs.next()) {

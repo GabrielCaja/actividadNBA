@@ -121,7 +121,8 @@ public class Menu {
 						break;
 					case 2:
 						System.out.println("Introduce el jugador que quieras buscar");
-						String buscarNombre = sc.next();
+						sc = new Scanner(System.in);
+						String buscarNombre = sc.nextLine();
 						System.out.println(gestionJugador.findById(buscarNombre));
 						break;
 					case 3:
@@ -187,37 +188,55 @@ public class Menu {
 
 					switch (opcionStats) {
 					case 1:
-						
+						System.out.println("Introduce el jugador que quieras buscar estadisticas");
+						sc = new Scanner(System.in);
+						String buscarNombreStat = sc.nextLine();
+						Jugador jugadorStats12 = gestionJugador.findById(buscarNombreStat);
+						System.out.println(gestionStats.findById(jugadorStats12.getCodigo()));
 						break;
 					case 2:
-
+						System.out.println("Introduce el jugador que quieras buscar estadisticas");
+						sc = new Scanner(System.in);
+						String buscarNombreStat2 = sc.nextLine();
+						System.out.println(gestionStats.findByCountry(buscarNombreStat2));
 						break;
 					case 3:
-
+						
+						sc = new Scanner(System.in);
+						String buscarNombreStat3 = sc.nextLine();
+						System.out.println(gestionStats.findByEquipo(buscarNombreStat3));
+						
+						
+						
+						
 						break;
 					case 4:
-						System.out.println("Introduce el jugador que quieras saber su media de puntos");
-						String buscarNombre = sc.next();
-						Jugador jugadorStats = gestionJugador.findById(buscarNombre);
-						System.out.println(gestionStats.mediaPuntosPartido(jugadorStats));
+						System.out.println("Introduce el jugador que quieras buscar");
+						sc = new Scanner(System.in);
+						String buscarNombre = sc.nextLine();
+						Jugador jugadorStats1 = gestionJugador.findById(buscarNombre);
+						System.out.println(gestionStats.mediaPuntosPartido(jugadorStats1));
 						break;
 					case 5:
-						System.out.println("Introduce el jugador que quieras saber su media de asistencias");
-						String buscarNombre3 = sc.next();
-						Jugador jugadorStats3 = gestionJugador.findById(buscarNombre3);
-						System.out.println(gestionStats.mediaAsistencias(jugadorStats3));
+						System.out.println("Introduce el jugador que quieras buscar su media de asistencias");
+						sc = new Scanner(System.in);
+						String buscarNombre2 = sc.nextLine();
+						Jugador jugadorStats2 = gestionJugador.findById(buscarNombre2);
+						System.out.println(gestionStats.mediaAsistencias(jugadorStats2));
 						break;
 					case 6:
 						System.out.println("Introduce el jugador que quieras saber su media de tapones");
-						String buscarNombre1 = sc.next();
-						Jugador jugadorStats1 = gestionJugador.findById(buscarNombre1);
-						System.out.println(gestionStats.mediaTapones(jugadorStats1));
+						sc = new Scanner(System.in);
+						String buscarNombre3 = sc.nextLine();
+						Jugador jugadorStats3 = gestionJugador.findById(buscarNombre3);
+						System.out.println(gestionStats.mediaTapones(jugadorStats3));
 						break;
 					case 7:
 						System.out.println("Introduce el jugador que quieras saber su media de rebotes");
-						String buscarNombre2 = sc.next();
-						Jugador jugadorStats2 = gestionJugador.findById(buscarNombre2);
-						System.out.println(gestionStats.mediaRebotes(jugadorStats2));
+						sc = new Scanner(System.in);
+						String buscarNombre4 = sc.nextLine();
+						Jugador jugadorStats4 = gestionJugador.findById(buscarNombre4);
+						System.out.println(gestionStats.mediaRebotes(jugadorStats4));
 						break;
 					case 8:
 						break;

@@ -19,6 +19,17 @@ public class Estadistica extends AbstractConexion{
 		
 	}
 
+	public Estadistica(String temporada, int jugador, double puntos_por_partido, double asistencias_por_partido,
+			double tapones_por_partido, double rebotes_por_partido) {
+		super();
+		this.temporada = temporada;
+		this.jugador = jugador;
+		Puntos_por_partido = puntos_por_partido;
+		Asistencias_por_partido = asistencias_por_partido;
+		Tapones_por_partido = tapones_por_partido;
+		Rebotes_por_partido = rebotes_por_partido;
+	}
+
 	public void mostrarEstadiscticas() {	   
 	            try {
 	                System.out.println("Conectado correctamente a la base de datos\n");
