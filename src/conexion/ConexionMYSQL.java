@@ -1,14 +1,26 @@
+/*@author
+ * Gabriel Caja
+ */
 package conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * The Class ConexionMYSQL.
+ */
 public class ConexionMYSQL {
 
+    /** The pass. */
     private String url, user, pass;
+    
+    /** The conn. */
     private static Connection conn;
 
+    /**
+     * Instantiates a new conexion MYSQL.
+     */
     private ConexionMYSQL() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,6 +40,11 @@ public class ConexionMYSQL {
         }
     }
 
+    /**
+     * Gets the connection.
+     *
+     * @return the connection
+     */
     public static Connection getConnection() {
         if(conn == null) {
             new ConexionMYSQL();

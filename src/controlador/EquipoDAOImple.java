@@ -1,3 +1,6 @@
+/*@author
+ * Gabriel Caja
+ */
 package controlador;
 
 import java.sql.ResultSet;
@@ -15,20 +18,37 @@ import conexion.app;
 import interfaces.EquipoDAO;
 import modelos.Equipo;
 
+/**
+ * The Class EquipoDAOImple.
+ */
 public class EquipoDAOImple extends AbstractConexion implements EquipoDAO {
 
+	/** The equipo. */
 	private Equipo equipo = new Equipo();
-	private boolean equipoCreado,cambioDivision;
+	
+	/** The cambio division. */
+	private boolean equipoCreado, cambioDivision;
+	
+	/** The sc. */
 	Scanner sc = new Scanner(System.in);
+	
+	/** The filas afectadas. */
 	private static int filasAfectadas;
+
+	/**
+	 * Find by id.
+	 *
+	 * @param nombre the nombre
+	 * @return the equipo
+	 */
 	@Override
 	public Equipo findById(String nombre) {
 		try {
 			quitarRestricciones();
 			query = "SELECT * FROM equipos WHERE Nombre = ? ";
-			
+
 			pst = conn.prepareStatement(query);
-			
+
 			pst.setString(1, nombre);
 			rs = pst.executeQuery();
 
@@ -37,17 +57,22 @@ public class EquipoDAOImple extends AbstractConexion implements EquipoDAO {
 				String ciudad = rs.getString(2);
 				String conferencia = rs.getString(3);
 				String division = rs.getString(4);
-				
+
 				equipo = new Equipo(nombreEquipo, ciudad, conferencia, division);
 			}
-	
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		return equipo;	
+
+		return equipo;
 	}
 
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	@Override
 	public List<Equipo> findAll() {
 		try {
@@ -81,30 +106,30 @@ public class EquipoDAOImple extends AbstractConexion implements EquipoDAO {
 
 	@Override
 	public boolean crearEquipo(Equipo equipo) {
-		try {			
-				quitarRestricciones();
-				query = "INSERT INTO equipos (nombre, ciudad, conferencia, division)VALUES (?,?,?,?);";
-				
-				pst = conn.prepareStatement(query);
-				pst.setString(1, equipo.getNombre());
-				pst.setString(2, equipo.getCiudad());
-				pst.setString(3, equipo.getConferencia());
-				pst.setString(4, equipo.getDivision());
+		try {
+			quitarRestricciones();
+			query = "INSERT INTO equipos (nombre, ciudad, conferencia, division)VALUES (?,?,?,?);";
 
-				filasAfectadas = pst.executeUpdate();
-				equipoCreado = true;
+			pst = conn.prepareStatement(query);
+			pst.setString(1, equipo.getNombre());
+			pst.setString(2, equipo.getCiudad());
+			pst.setString(3, equipo.getConferencia());
+			pst.setString(4, equipo.getDivision());
+
+			filasAfectadas = pst.executeUpdate();
+			equipoCreado = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			equipoCreado = false;
 		}
-		
-		return equipoCreado;	
+
+		return equipoCreado;
 	}
 
 	@Override
 	public boolean cambioDivision(Equipo equipo) {
-		
-		try {			
+
+		try {
 			quitarRestricciones();
 			query = "UPDATE equipos SET division = ? WHERE nombre = ?;";
 			System.out.println("Que equipo quieres cambiar?");
@@ -114,15 +139,15 @@ public class EquipoDAOImple extends AbstractConexion implements EquipoDAO {
 			pst = conn.prepareStatement(query);
 			pst.setString(1, divisionCambiada);
 			pst.setString(2, nombreEquipoDivision);
-			
+
 			filasAfectadas = pst.executeUpdate();
-			cambioDivision=true;
+			cambioDivision = true;
 			System.out.println(findById(nombreEquipoDivision));
 
-	} catch (SQLException e) {
-		e.printStackTrace();
-		cambioDivision=false;
-	}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			cambioDivision = false;
+		}
 		return cambioDivision;
 	}
 

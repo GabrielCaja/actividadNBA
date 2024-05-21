@@ -1,3 +1,6 @@
+/*@author
+ * Gabriel Caja
+ */
 package controlador;
 
 import java.sql.PreparedStatement;
@@ -11,11 +14,29 @@ import interfaces.EstadisticaDAO;
 import modelos.Estadistica;
 import modelos.Jugador;
 
+/**
+ * The Class EstadisticasDAOImple.
+ */
 public class EstadisticasDAOImple extends AbstractConexion implements EstadisticaDAO{
+	
+	/** The media. */
 	private double media;
+	
+	/** The stats jugador. */
 	private List<Estadistica> statsJugador = new ArrayList <>();
+	
+	/** The stats jugador C. */
 	private List<Estadistica> statsJugadorC = new ArrayList <>();
+	
+	/** The stats equipo. */
 	private List<Estadistica> statsEquipo = new ArrayList <>();
+	
+	/**
+	 * Find by id.
+	 *
+	 * @param codigo the codigo
+	 * @return the list
+	 */
 	@Override
 	public List<Estadistica> findById(int codigo) {
 		try {
@@ -45,6 +66,12 @@ public class EstadisticasDAOImple extends AbstractConexion implements Estadistic
 		return statsJugador;
 	}
 
+	/**
+	 * Find by country.
+	 *
+	 * @param country the country
+	 * @return the list
+	 */
 	@Override
 	public List<Estadistica> findByCountry(String country) {
 		try {
@@ -74,6 +101,12 @@ public class EstadisticasDAOImple extends AbstractConexion implements Estadistic
 		return statsJugadorC;
 	}
 
+	/**
+	 * Find by equipo.
+	 *
+	 * @param nombre the nombre
+	 * @return the list
+	 */
 	@Override
 	public List<Estadistica> findByEquipo(String nombre) {
 		try {
@@ -112,6 +145,12 @@ public class EstadisticasDAOImple extends AbstractConexion implements Estadistic
 		return statsEquipo;
 	}
 
+	/**
+	 * Media puntos partido.
+	 *
+	 * @param jugador the jugador
+	 * @return the double
+	 */
 	@Override
 	public double mediaPuntosPartido(Jugador jugador) {
 	    media = 0;
@@ -139,6 +178,13 @@ public class EstadisticasDAOImple extends AbstractConexion implements Estadistic
 
 	    return media;
 	}
+	
+	/**
+	 * Media asistencias.
+	 *
+	 * @param jugador the jugador
+	 * @return the double
+	 */
 	@Override
 	public double mediaAsistencias(Jugador jugador) {
 	    media = 0;
@@ -169,6 +215,12 @@ public class EstadisticasDAOImple extends AbstractConexion implements Estadistic
 			return media;
 	}
 
+	/**
+	 * Media tapones.
+	 *
+	 * @param jugador the jugador
+	 * @return the double
+	 */
 	@Override
 	public double mediaTapones(Jugador jugador) {
 	    media = 0;
@@ -198,6 +250,12 @@ public class EstadisticasDAOImple extends AbstractConexion implements Estadistic
 			return media;
 	}
 
+	/**
+	 * Media rebotes.
+	 *
+	 * @param jugador the jugador
+	 * @return the double
+	 */
 	@Override
 	public double mediaRebotes(Jugador jugador) {
 	    media = 0;

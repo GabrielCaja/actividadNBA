@@ -1,3 +1,6 @@
+/*@author
+ * Gabriel Caja
+ */
 package controlador;
 
 import java.sql.PreparedStatement;
@@ -10,7 +13,12 @@ import interfaces.PartidoDAO;
 import modelos.Equipo;
 import modelos.Partido;
 
+/**
+ * The Class PartidoDAOImple.
+ */
 public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
+	
+	/** The media puntos local. */
 	private double mediaPuntos,mediaAsistencias,mediaTapones,mediaRebotes,mediaPuntosLocal;
 	@Override
 	public void visualizarDatos() {
@@ -29,6 +37,12 @@ public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
         }
 	}
 
+	/**
+	 * Media puntos.
+	 *
+	 * @param equipo the equipo
+	 * @return the double
+	 */
 	@Override
 	public double mediaPuntos(Equipo equipo) {
 		
@@ -57,6 +71,12 @@ public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
 		return mediaPuntos;
 	}
 
+	/**
+	 * Media asistencias.
+	 *
+	 * @param equipo the equipo
+	 * @return the double
+	 */
 	@Override
 	public double mediaAsistencias(Equipo equipo) {
 		mediaAsistencias = 0;
@@ -84,6 +104,12 @@ public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
 		return mediaAsistencias;
 	}
 
+	/**
+	 * Media tapones.
+	 *
+	 * @param equipo the equipo
+	 * @return the double
+	 */
 	@Override
 	public double mediaTapones(Equipo equipo) {
 		mediaTapones = 0;
@@ -111,6 +137,12 @@ public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
 		return mediaTapones;
 	}
 
+	/**
+	 * Media rebotes.
+	 *
+	 * @param equipo the equipo
+	 * @return the double
+	 */
 	@Override
 	public double mediaRebotes(Equipo equipo) {
 		mediaRebotes = 0;
@@ -138,6 +170,12 @@ public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
 		return mediaRebotes;
 	}
 
+	/**
+	 * Media puntos local.
+	 *
+	 * @param partido the partido
+	 * @return the double
+	 */
 	@Override
 	public double mediaPuntosLocal(Partido partido) {
 		mediaPuntosLocal = 0;
@@ -165,6 +203,12 @@ public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
 		return mediaPuntosLocal;
 	}
 
+	/**
+	 * Media puntos visitante.
+	 *
+	 * @param partido the partido
+	 * @return the double
+	 */
 	@Override
 	public double mediaPuntosVisitante(Partido partido) {
 
@@ -173,6 +217,12 @@ public class PartidoDAOImple extends AbstractConexion implements PartidoDAO {
 		return 0;
 	}
 
+	/**
+	 * Porcentaje victorias.
+	 *
+	 * @param partido the partido
+	 * @return the double
+	 */
 	@Override
 	public double porcentajeVictorias(Partido partido) {
 

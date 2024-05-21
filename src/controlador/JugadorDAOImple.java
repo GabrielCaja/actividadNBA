@@ -1,3 +1,6 @@
+/*@author
+ * Gabriel Caja
+ */
 package controlador;
 
 import java.sql.PreparedStatement;
@@ -10,19 +13,34 @@ import interfaces.JugadorDAO;
 import modelos.Equipo;
 import modelos.Jugador;
 
-public class JugadorDAOImple extends AbstractConexion implements JugadorDAO{
-	private boolean jugadorCreado, result ;
-	private Jugador jugador = new Jugador();
-	Scanner sc = new Scanner(System.in);
+/**
+ * The Class JugadorDAOImple.
+ */
+public class JugadorDAOImple extends AbstractConexion implements JugadorDAO {
 	
+	/** The result. */
+	private boolean jugadorCreado, result;
+	
+	/** The jugador. */
+	private Jugador jugador = new Jugador();
+	
+	/** The sc. */
+	Scanner sc = new Scanner(System.in);
+
+	/**
+	 * Find by id.
+	 *
+	 * @param nombre the nombre
+	 * @return the jugador
+	 */
 	@Override
 	public Jugador findById(String nombre) {
 		try {
 			quitarRestricciones();
 			query = "SELECT * FROM jugadores WHERE nombre  like ?";
-			
+
 			pst = conn.prepareStatement(query);
-			
+
 			pst.setString(1, nombre + "%");
 			rs = pst.executeQuery();
 
@@ -35,7 +53,7 @@ public class JugadorDAOImple extends AbstractConexion implements JugadorDAO{
 				String posicion = rs.getString(6);
 				String nombreEquipo = rs.getString(7);
 
-	            jugador = new Jugador(codigo, nombreJugador, procedencia, altura, peso, posicion, nombreEquipo);
+				jugador = new Jugador(codigo, nombreJugador, procedencia, altura, peso, posicion, nombreEquipo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -43,6 +61,11 @@ public class JugadorDAOImple extends AbstractConexion implements JugadorDAO{
 		return jugador;
 	}
 
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	@Override
 	public List<Jugador> findAll() {
 		try {
@@ -57,15 +80,21 @@ public class JugadorDAOImple extends AbstractConexion implements JugadorDAO{
 			e.printStackTrace();
 		}
 		return null;
-	
+
 	}
 
+	/**
+	 * Crear jugador.
+	 *
+	 * @param jugador the jugador
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean crearJugador(Jugador jugador) {
-		try {			
+		try {
 			quitarRestricciones();
 			query = "INSERT INTO jugadores (codigo,nombre,procedencia,altura,peso,posicion,nombre_equipo)VALUES (?,?,?,?,?,?,?);";
-			
+
 			pst = conn.prepareStatement(query);
 			pst.setInt(1, jugador.getCodigo());
 			pst.setString(2, jugador.getNombre());
@@ -77,38 +106,54 @@ public class JugadorDAOImple extends AbstractConexion implements JugadorDAO{
 
 			pst.executeUpdate();
 			jugadorCreado = true;
-	} catch (SQLException e) {
-		e.printStackTrace();
-		jugadorCreado = false;
-	}
-		
+		} catch (SQLException e) {
+			e.printStackTrace();
+			jugadorCreado = false;
+		}
+
 		return jugadorCreado;
 	}
 
+	/**
+	 * Fichar jugador.
+	 *
+	 * @param jugador the jugador
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean ficharJugador(Jugador jugador) {
-        String query = "UPDATE jugadores SET nombre_equipo = ? WHERE nombre = ?";
-        try (PreparedStatement statement = conn.prepareStatement(query)) {
-            statement.setString(1, jugador.getNombre_equipo());
-            statement.setString(2, jugador.getNombre());
-            result = statement.executeUpdate() > 0;
-            result = true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            result = false;
+		String query = "UPDATE jugadores SET nombre_equipo = ? WHERE nombre = ?";
+		try (PreparedStatement statement = conn.prepareStatement(query)) {
+			statement.setString(1, jugador.getNombre_equipo());
+			statement.setString(2, jugador.getNombre());
+			result = statement.executeUpdate() > 0;
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
 
-        }
-        return result;
-    }
+		}
+		return result;
+	}
 
+	/**
+	 * Pruebas fisicas jugador.
+	 *
+	 * @param jugador the jugador
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean pruebasFisicasJugador(Jugador jugador) {
-		
-		
-		
+
 		return false;
 	}
 
+	/**
+	 * Retirar jugador.
+	 *
+	 * @param codigo the codigo
+	 * @return the int
+	 */
 	@Override
 	public int retirarJugador(int codigo) {
 		try {
@@ -121,8 +166,7 @@ public class JugadorDAOImple extends AbstractConexion implements JugadorDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return codigo;
 	}
 

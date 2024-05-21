@@ -1,3 +1,6 @@
+/*@author
+ * Gabriel Caja
+ */
 package conexion;
 
 import java.sql.Connection;
@@ -6,12 +9,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * The Class AbstractConexion.
+ */
 public abstract class AbstractConexion {
 	
+		/** The conn. */
 		protected  Connection conn;
+		
+		/** The pst. */
 		protected  PreparedStatement pst;
+		
+		/** The st. */
 		protected  Statement st;
+		
+		/** The rs. */
 		protected  ResultSet rs;
+		
+		/** The query. */
 		protected  String query;
 		
 		protected AbstractConexion() {
